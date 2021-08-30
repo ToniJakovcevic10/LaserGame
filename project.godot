@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="HEHE_LASER_GAME"
+run/main_scene="res://World.tscn"
+config/icon="res://icon.png"
+
+[layer_names]
+
+2d_render/layer_1="Laser"
+2d_physics/layer_1="Laser"
+2d_render/layer_6="Air"
+2d_physics/layer_6="Air"
+2d_render/layer_7="Glass"
+2d_physics/layer_7="Glass"
+2d_render/layer_8="Water"
+2d_physics/layer_8="Water"
+2d_render/layer_9="Diamond"
+2d_physics/layer_9="Diamond"
+2d_render/layer_10="Germanium"
+2d_physics/layer_10="Germanium"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
