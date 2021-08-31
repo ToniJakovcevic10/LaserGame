@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Laser_Beam/LaserBeam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Optical_Media/Air/Air.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Singleton_script.gd" type="Script" id=3]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -15,3 +18,5 @@ position = Vector2( 10, 300 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders"]
 position = Vector2( 15.1361, -16.8179 )
 polygon = PoolVector2Array( -22.5707, 13.0436, -15.8392, 18.2812, -15.8436, 618.489, 1011.73, 613.444, 1011.73, 13.0436, -4.07101, 14.7254, -4.07101, 4.63466, 1018.46, 6.31645, 1016.78, 621.853, -22.5707, 623.534 )
+
+[node name="nodeAir" parent="." instance=ExtResource( 2 )]

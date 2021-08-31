@@ -19,6 +19,11 @@ config/name="HEHE_LASER_GAME"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SingletonScript="*res://Singleton_script.gd"
+Air="*res://Optical_Media/Air/Air.gd"
+
 [layer_names]
 
 2d_render/layer_1="Laser"

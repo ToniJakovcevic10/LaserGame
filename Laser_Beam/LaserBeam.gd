@@ -7,7 +7,7 @@ onready var beam = $Beam
 onready var end = $End
 onready var raycast2D = $RayCast2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var mouse_position = get_local_mouse_position()
 	var max_cast_to = mouse_position.normalized() * MAX_LENGTH
 	raycast2D.cast_to = max_cast_to
