@@ -48,5 +48,30 @@ process_material = SubResource( 4 )
 texture = ExtResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 100, 0 )
+collision_mask = 997
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 0.332276, -0.0136831 )
+rotation = -0.0411567
+scale = Vector2( 0.995876, 1 )
+points = PoolVector2Array( 104.636, 4.14434, 395.834, 13.305 )
+width = 24.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line_Ray" type="RayCast2D" parent="."]
+visible = false
+collision_mask = 6
+
+[node name="Particles2Dline" type="Particles2D" parent="Line_Ray"]
+visible = false
+position = Vector2( 100, 0 )
+amount = 6
+lifetime = 0.1
+preprocess = 0.1
+local_coords = false
+process_material = SubResource( 4 )
+texture = ExtResource( 1 )

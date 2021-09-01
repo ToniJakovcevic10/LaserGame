@@ -22,12 +22,15 @@ config/icon="res://icon.png"
 [autoload]
 
 SingletonScript="*res://Singleton_script.gd"
-Air="*res://Optical_Media/Air/Air.gd"
+AirNode="*res://Optical_Media/Air/airNode.tscn"
 
 [layer_names]
 
-2d_render/layer_1="Laser"
-2d_physics/layer_1="Laser"
+2d_render/layer_1="Wall"
+2d_physics/layer_1="Wall"
+2d_render/layer_2="Laser"
+2d_physics/layer_2="Laser"
+2d_physics/layer_3="Mirror"
 2d_render/layer_6="Air"
 2d_physics/layer_6="Air"
 2d_render/layer_7="Glass"
@@ -38,6 +41,7 @@ Air="*res://Optical_Media/Air/Air.gd"
 2d_physics/layer_9="Diamond"
 2d_render/layer_10="Germanium"
 2d_physics/layer_10="Germanium"
+2d_render/layer_16="Mirror"
 
 [rendering]
 
