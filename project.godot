@@ -22,7 +22,11 @@ config/icon="res://icon.png"
 [autoload]
 
 SingletonScript="*res://Singleton_script.gd"
-AirNode="*res://Optical_Media/Air/airNode.tscn"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [layer_names]
 
