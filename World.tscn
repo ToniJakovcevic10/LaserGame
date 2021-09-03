@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Laser_Beam/LaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mirror/Mirror.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Singleton_script.gd" type="Script" id=3]
 [ext_resource path="res://Optical_Media/prism.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Target/NodeTarget.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -42,15 +43,15 @@ collision_mask = 6
 [node name="Mirror3" parent="." groups=[
 "Mirrors",
 ] instance=ExtResource( 2 )]
-position = Vector2( 576, 256 )
+position = Vector2( 592, 152 )
 rotation = 0.523598
 scale = Vector2( 1, 1 )
 collision_layer = 6
 collision_mask = 6
 
-[node name="prism" parent="." groups=[
-"Prism",
-] instance=ExtResource( 4 )]
+[node name="prism" parent="." instance=ExtResource( 4 )]
 position = Vector2( 728, 296 )
 collision_mask = 994
-[connection signal="body_entered" from="prism" to="LaserBeam" method="_on_prism_body_entered"]
+
+[node name="NodeTarget" parent="." instance=ExtResource( 5 )]
+position = Vector2( 952, 300 )

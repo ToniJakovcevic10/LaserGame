@@ -34,7 +34,10 @@ window/stretch/aspect="keep"
 2d_physics/layer_1="Wall"
 2d_render/layer_2="Laser"
 2d_physics/layer_2="Laser"
+2d_render/layer_3="Mirror"
 2d_physics/layer_3="Mirror"
+2d_render/layer_4="Target"
+2d_physics/layer_4="Target"
 2d_render/layer_6="Air"
 2d_physics/layer_6="Air"
 2d_render/layer_7="Glass"
@@ -45,7 +48,6 @@ window/stretch/aspect="keep"
 2d_physics/layer_9="Diamond"
 2d_render/layer_10="Germanium"
 2d_physics/layer_10="Germanium"
-2d_render/layer_16="Mirror"
 
 [rendering]
 
