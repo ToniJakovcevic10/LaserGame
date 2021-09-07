@@ -41,3 +41,13 @@ value = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -24.0
+margin_top = -240.0
+margin_right = 24.0
+margin_bottom = -226.0
+text = "nesto"
+__meta__ = {
+"_edit_use_anchors_": false
+}

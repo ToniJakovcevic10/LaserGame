@@ -2,8 +2,7 @@ extends Node2D
 
 var MAX_BOUNCES = 5
 const MAX_LENGTH=2000
-var LEVEL = 0
-
+var scene_changing = false
 
 
 onready var beam = $Beam
@@ -30,7 +29,6 @@ func _process(_delta):
 		var bounces = 0
 		
 		while true:
-			var check = true
 			if not line_ray.is_colliding():
 				var pt = line_ray.global_position + line_ray.cast_to
 				line.add_point(line.to_local(pt))
@@ -42,7 +40,6 @@ func _process(_delta):
 			
 			line.add_point(line.to_local(pt))
 			
-					
 			if coll.is_in_group("Mirrors"): #if it didnt hit mirror check for prism
 				var normal = line_ray.get_collision_normal()  #to make sure on which angle we are colliding
 				if normal == Vector2.ZERO:
@@ -66,11 +63,37 @@ func _process(_delta):
 					previous.collision_mask = 3
 					previous.collision_layer = 3
 				previous = coll
-				previous.collision_mask = 0
-				previous.collision_layer = 0
-				line_ray.global_position = pt
-				line_ray.cast_to = line_ray.cast_to.bounce(Vector2(1,5).normalized())
-				line_ray.force_raycast_update()
+				if coll.collision_layer==6:
+					previous.collision_mask = 0
+					previous.collision_layer = 0
+					line_ray.global_position = pt
+					line_ray.rotation_degrees = calculate_angle(SingletonScript.nAir)
+					line_ray.force_raycast_update()
+				elif coll.collision_layer == 7:
+					previous.collision_mask = 0
+					previous.collision_layer = 0
+					line_ray.global_position = pt
+					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nWater)
+					line_ray.force_raycast_update()
+				elif coll.collision_layer == 8:
+					previous.collision_mask = 0
+					previous.collision_layer = 0
+					line_ray.global_position = pt
+					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGlass)
+#					line_ray.rotation_degrees =calc_angle(line_ray.cast_to, Vector2(0,1), SingletonScript.nGlass)
+					line_ray.force_raycast_update()
+				elif coll.collision_layer == 9:
+					previous.collision_mask = 0
+					previous.collision_layer = 0
+					line_ray.global_position = pt
+					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nDiamond)
+					line_ray.force_raycast_update()
+				else:
+					previous.collision_mask = 0
+					previous.collision_layer = 0
+					line_ray.global_position = pt
+					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGermanium)
+					line_ray.force_raycast_update()
 			else: 
 				break
 			bounces += 1
@@ -80,26 +103,7 @@ func _process(_delta):
 		if previous !=null:
 			previous.collision_mask = 3
 			previous.collision_layer = 3
-		line_ray.rotation = 0
-
-#func prism_checker():
-#	#if not coll.is_in_group("Prism"): #if it didnt hit prism break
-#	var normal = line_ray.get_collision_normal() #if it did hit prism make refraction
-##	if normal == Vector2.ZERO:
-##		break
-#	#update collisions
-#	if previous !=null:
-#		previous.collision_mask = 6
-#		previous.collision_layer = 6
-#	previous = coll
-#	#update raycast
-#	line_ray.global_position = pt
-#	line_ray.rotation += Vector2(1,4).angle() #have to change refraction angle with another func
-#	line_ray.cast_to = line_ray.cast_to.bounce(normal)
-#	line_ray.force_raycast_update()
-#	bounces += 1
-##	if bounces >= MAX_BOUNCES:
-##		break
+		line_ray.rotation_degrees = 0
 
 
 #func _physics_process(_delta):
@@ -115,27 +119,33 @@ func _process(_delta):
 #	beam.region_rect.end.x = end.position.length()
 
 
-func calculate_angle(angle, size,n):
-	angle = angle * PI/180
-	
-	var fx = size * cos(angle)
-	var fy = size * sin(angle)
-	
+func calculate_angle(n):
+	var angle
+	angle = 1/sin(1/n)
+	return angle
+
+#func calc_angle(vec : Vector2,normal : Vector2,n):
+#	var degree = rad2deg(vec.angle_to(normal))
+#	var angle
+#	angle = 1/sin(sin(degree)/n)
+#	return angle
 
 func _physics_process(_delta):
+	var mouse_position = get_local_mouse_position()
+	var max_cast_to = mouse_position.normalized() * MAX_LENGTH
+	raycast2D.cast_to = max_cast_to
+	if raycast2D.is_colliding():
+		end.global_position = raycast2D.get_collision_point()
+	else:
+		end.global_position = raycast2D.cast_to
+	beam.rotation = raycast2D.cast_to.angle()
+	beam.region_rect.end.x = end.position.length()
+	
 	if line_ray.is_colliding():
 		var coll = line_ray.get_collider()
-		var pt = line_ray.get_collision_point()
 		if coll.is_in_group("Target"):
-			LEVEL += 1
-			print("congrats, you passed the level")
-
-#func _on_prism_body_entered(body):
-#	if body.name == "line_ray":
-#		var pt = line_ray.get_collision_point()
-#		line.add_point(line.to_local(pt))
-#		line_ray.global_position = pt
-#		line_ray.cast_to = (get_global_mouse_position() - line.global_position).normalized()*2000
-#		line_ray.rotation_degrees(20)
-#		line_ray.force_raycast_update()
-#
+			SingletonScript.LEVEL += 1
+			print(SingletonScript.LEVEL)
+			if SingletonScript.LEVEL >= 50:
+				PlayerData.score +=1
+				SingletonScript.LEVEL = 1
