@@ -1,12 +1,13 @@
 extends Area2D
 
 var density = 1
-var boolean = false
+var count_score = 1
 onready var slider = $HSlider
 onready var coll_prism = $prism_coll_left
 onready var textlabel = $Label2
 
 func slider_value():
+	density = slider.value
 	if slider.value == 1:
 		self. collision_layer = 6
 		textlabel.text = "Air"
@@ -25,6 +26,6 @@ func slider_value():
 
 func _process(_delta):
 	slider_value()
-	if density !=slider.value:
-		density = slider.value
-		
+	if count_score != PlayerData.score:
+		slider.value = SingletonScript.choosing_random_number()
+		count_score = PlayerData.score

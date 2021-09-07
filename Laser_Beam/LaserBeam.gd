@@ -2,7 +2,7 @@ extends Node2D
 
 var MAX_BOUNCES = 5
 const MAX_LENGTH=2000
-var scene_changing = false
+var death_time = 0
 
 
 onready var beam = $Beam
@@ -12,11 +12,11 @@ onready var line = $Line2D
 onready var line_ray=$Line_Ray
 onready var end_line = $Line_Ray/End2
 
-
+#func _ready():
+	
 
 func _process(_delta):
 	line.clear_points()
-	
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		line.add_point(Vector2.ZERO)
 
@@ -140,12 +140,22 @@ func _physics_process(_delta):
 		end.global_position = raycast2D.cast_to
 	beam.rotation = raycast2D.cast_to.angle()
 	beam.region_rect.end.x = end.position.length()
-	
 	if line_ray.is_colliding():
 		var coll = line_ray.get_collider()
+		if SingletonScript.LEVEL >= 50:
+			PlayerData.score +=1
+			SingletonScript.LEVEL = 0
+			self.queue_free()
+		if death_time >=50:
+			PlayerData.death +=1
+			death_time = 0
+			line.clear_points()
 		if coll.is_in_group("Target"):
 			SingletonScript.LEVEL += 1
 			print(SingletonScript.LEVEL)
-			if SingletonScript.LEVEL >= 50:
-				PlayerData.score +=1
-				SingletonScript.LEVEL = 1
+		elif coll.is_in_group("Mirrors"):
+			pass
+		else:
+			# line_ray.queue_free()     #ne moze jer onda triba stvarat novi raycast uvik
+			death_time +=1
+			coll = null  #moran napravit nekako da mi death_time raste samo kad je u koliziji, ne kad stane 

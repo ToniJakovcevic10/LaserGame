@@ -12,27 +12,18 @@ var nDiamond = 2.419
 var nGermanium = 4.01
 
 onready var scene_tree: = get_tree()
-onready var target: Node2D = get_node("res://Target/NodeTarget.tscn")
-onready var miror: StaticBody2D = get_node("res://Mirror/Mirror.tscn")
-
-func _ready() ->void:
-	PlayerData.connect("score_updated", self, "_update_mirror")
-	PlayerData.connect("score_updated", self, "_update_target")
+#onready var target: Node2D = get_node("res://Target/NodeTarget.tscn")
+#onready var mirror: StaticBody2D = get_node("res://Mirror/Mirror.tscn")
 
 
-func _update_mirror():
-	miror.position = Vector2(randi()%450, randi()%500 + 50)
-	miror.rotation_degrees = randi()%360
 
-func _update_target():
-	target.position = Vector2(randi()%150 + 800, randi()%500 + 50)
 
 #choosing random number
 func choosing_random_number():
 	randomize()
-	opticalmedia = randi() % 2
-	print (opticalmedia)
-	return 1
+	opticalmedia = randi() % 5
+	return (opticalmedia + 1)
+	
 
 #func prism_creation():
 #	var prism_instance = prism.instance()

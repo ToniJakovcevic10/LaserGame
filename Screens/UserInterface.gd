@@ -20,7 +20,7 @@ func set_paused(value: bool) ->void:
 
 func update_interface() ->void: 
 	score_label.text = "Score: %s" % PlayerData.score
-	if PlayerData.score != 0:
+	if PlayerData.score != PlayerData.check_score:
 		get_tree().change_scene("res://Screens/Level_Passed_Screen.tscn")
 
 func _PlayerData_player_died() ->void: 
