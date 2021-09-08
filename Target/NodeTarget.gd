@@ -1,16 +1,12 @@
 extends Node2D
 
-#var direction = Vector2(+1,+1)
-#onready var target: = $KinematicBodyTarget
-#func _process(delta):
-#	target.move_and_slide(direction)
-#	if target.is_on_wall():
-#		direction.x = -direction.x
-#		direction.y += random_direction() - direction.y
-#
-#
-#
-#func random_direction():
-#	randomize()
-#	var rand= randi()%3 - 1
-#	return rand
+
+var levels_passed = 0
+
+onready var target = $staticBodyTarget
+
+func _process(_delta):
+	if PlayerData.score > (levels_passed + 3):
+		levels_passed +=3
+		self.scale.x = 0.85 * self.scale.x
+		self.scale.y = 0.85* self.scale.y 

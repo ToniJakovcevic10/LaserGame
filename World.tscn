@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Laser_Beam/LaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mirror/Mirror.tscn" type="PackedScene" id=2]
@@ -7,9 +7,24 @@
 [ext_resource path="res://Target/NodeTarget.tscn" type="PackedScene" id=5]
 [ext_resource path="res://border/Borders.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Screens/UserInterface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://casual_blue.jpg" type="Texture" id=8]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 0.490196, 0.47451, 0.47451, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1680.0
+margin_bottom = 1050.0
+rect_scale = Vector2( 0.607758, 0.576009 )
+texture = ExtResource( 8 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -28,8 +43,8 @@ position = Vector2( 10, 300 )
 [node name="Mirror" parent="." groups=[
 "Mirrors",
 ] instance=ExtResource( 2 )]
-position = Vector2( 384, 456 )
-rotation = -1.57079
+position = Vector2( 272, 464 )
+rotation = 1.22173
 scale = Vector2( 1, 0.827522 )
 collision_layer = 6
 collision_mask = 6
@@ -37,17 +52,17 @@ collision_mask = 6
 [node name="Mirror2" parent="." groups=[
 "Mirrors",
 ] instance=ExtResource( 2 )]
-position = Vector2( 592, 360 )
+position = Vector2( 688, 320 )
 rotation = 3.14159
-scale = Vector2( 1, 0.4626 )
+scale = Vector2( 0.94042, 0.406262 )
 collision_layer = 6
 collision_mask = 6
 
 [node name="Mirror3" parent="." groups=[
 "Mirrors",
 ] instance=ExtResource( 2 )]
-position = Vector2( 456, 136 )
-rotation = 0.523598
+position = Vector2( 440, 48 )
+rotation = 1.57079
 collision_layer = 6
 collision_mask = 6
 

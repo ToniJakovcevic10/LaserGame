@@ -15,6 +15,8 @@ __meta__ = {
 [node name="background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 3937.0
+margin_bottom = 4361.0
 rect_scale = Vector2( 0.205052, 0.120939 )
 texture = ExtResource( 1 )
 stretch_mode = 2
@@ -41,7 +43,6 @@ __meta__ = {
 }
 
 [node name="PlayButton" parent="Menu" instance=ExtResource( 3 )]
-next_scene_path = "res://World.tscn"
 
 [node name="QuitButton" parent="Menu" instance=ExtResource( 4 )]
 margin_top = 24.0

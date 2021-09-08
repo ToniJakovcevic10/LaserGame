@@ -3,4 +3,9 @@
 [node name="Retry_Button" type="Button"]
 margin_right = 208.0
 margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}

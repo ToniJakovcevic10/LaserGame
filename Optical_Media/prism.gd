@@ -11,18 +11,23 @@ func slider_value():
 	if slider.value == 1:
 		self. collision_layer = 6
 		textlabel.text = "Air"
+		coll_prism.modulate = Color(0, 0, 0, 0.505882)
 	elif slider.value == 2:
 		self.collision_layer = 7
 		textlabel.text = "Water"
+		coll_prism.modulate = Color(0.05098, 0.145098, 0.917647)
 	elif slider.value == 3:
 		self.collision_layer = 8
 		textlabel.text = "Glass"
+		coll_prism.modulate = Color(0.945098, 1, 0)
 	elif slider.value == 4:
 		self.collision_layer = 9
 		textlabel.text = "Diamond"
+		coll_prism.modulate = Color(0.917647, 0.05098, 0.556863)
 	elif slider.value == 5:
 		self.collision_layer = 10
 		textlabel.text = "Germanium"
+		coll_prism.modulate = Color(0.019608, 0.360784, 0.070588)
 
 func _process(_delta):
 	slider_value()

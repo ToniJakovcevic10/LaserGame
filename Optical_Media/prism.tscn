@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 [node name="prism_coll_left" type="CollisionShape2D" parent="." groups=[
 "Prism",
 ]]
-modulate = Color( 0.301961, 0.917647, 0.0509804, 1 )
+modulate = Color( 0.917647, 0.0509804, 0.556863, 1 )
 self_modulate = Color( 0.992188, 0.992188, 0.992188, 1 )
 shape = SubResource( 1 )
 
