@@ -48,11 +48,12 @@ rotation = 1.22173
 scale = Vector2( 1, 0.827522 )
 collision_layer = 6
 collision_mask = 6
+script = null
 
 [node name="Mirror2" parent="." groups=[
 "Mirrors",
 ] instance=ExtResource( 2 )]
-position = Vector2( 688, 320 )
+position = Vector2( 688, 312 )
 rotation = 3.14159
 scale = Vector2( 0.94042, 0.406262 )
 collision_layer = 6
@@ -65,6 +66,27 @@ position = Vector2( 440, 48 )
 rotation = 1.57079
 collision_layer = 6
 collision_mask = 6
+script = null
+
+[node name="Mirror4" parent="." groups=[
+"Mirrors",
+] instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 632, 416 )
+rotation = 3.14159
+scale = Vector2( 0.94042, 0.406262 )
+collision_layer = 16
+collision_mask = 4
+
+[node name="Mirror5" parent="." groups=[
+"Mirrors",
+] instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 656, 168 )
+rotation = 3.14159
+scale = Vector2( 0.94042, 0.406262 )
+collision_layer = 16
+collision_mask = 4
 
 [node name="prism" parent="." instance=ExtResource( 4 )]
 position = Vector2( 728, 296 )

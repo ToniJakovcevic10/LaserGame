@@ -5,7 +5,7 @@ onready var pause_overlay: ColorRect = get_node("PauseOverlay")
 onready var score_label: Label = get_node("score")
 onready var pause_title: Label = get_node("PauseOverlay/Title")
 
-var die_message: String = "You failed!\n %s more lives left" % (3 - PlayerData.death)
+var die_message: String = "You failed!\n %s more lives left" % (2 - PlayerData.death)
 var paused: = false setget set_paused
 
 func _ready() ->void:

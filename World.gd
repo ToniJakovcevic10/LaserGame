@@ -5,6 +5,8 @@ var obstac_number: int = 1
 onready var target: Node2D = $NodeTarget
 onready var mirror: StaticBody2D = $Mirror
 onready var mirror2: StaticBody2D = $Mirror2
+onready var mirror4: StaticBody2D = $Mirror4
+onready var mirror5: StaticBody2D = $Mirror5
 #onready var world = load("res://World.tscn")
 
 func _ready() ->void:
@@ -15,6 +17,12 @@ func _ready() ->void:
 	_update_mirror()
 	_update_target()
 	_update_mirror2()
+	if PlayerData.score >= 5:
+		mirror4.visible = true
+		mirror4.collision_layer = 3
+	if PlayerData.score >= 10:
+		mirror5.visible = true
+		mirror5.collision_layer = 3
 
 
 func _update_mirror():
@@ -28,7 +36,7 @@ func _update_mirror2():
 
 #func mirror_creation():
 #	var mirror_instance = mirror2.instance()
-#	mirror_instance.position = Vector2(randi()%30 + 600,obstacle_random_generator_number())
+#	mirror_instance.position = Vector2(randi()%10*10 + 500,obstacle_random_generator_number())
 #	get_parent().call_deferred("add_child",mirror_instance)
 
 
