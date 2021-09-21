@@ -68,7 +68,6 @@ end_cap_mode = 2
 round_precision = 100
 
 [node name="Line_Ray" type="RayCast2D" parent="."]
-visible = false
 cast_to = Vector2( 0, 0 )
 collision_mask = 1005
 collide_with_areas = true

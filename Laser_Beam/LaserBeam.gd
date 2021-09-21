@@ -70,22 +70,26 @@ func _process(_delta):
 				elif coll.collision_layer == 7:
 					previous = previous_setter(previous)
 					line_ray.global_position = pt
-					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nWater)
+					#line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nWater)
+					line_ray.rotation_degrees = calc_angle(line_ray.cast_to,normal,SingletonScript.nWater)
 					line_ray.force_raycast_update()
 				elif coll.collision_layer == 8:
 					previous = previous_setter(previous)
 					line_ray.global_position = pt
-					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGlass)
+					#line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGlass)
+					line_ray.rotation_degrees = calc_angle(line_ray.cast_to,normal,SingletonScript.nGlass)
 					line_ray.force_raycast_update()
 				elif coll.collision_layer == 9:
 					previous = previous_setter(previous)
 					line_ray.global_position = pt
-					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nDiamond)
+					#line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nDiamond)
+					line_ray.rotation_degrees = calc_angle(line_ray.cast_to,normal,SingletonScript.nDiamond)
 					line_ray.force_raycast_update()
 				else:
 					previous = previous_setter(previous)
 					line_ray.global_position = pt
-					line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGermanium)
+					#line_ray.rotation_degrees =2 * calculate_angle(SingletonScript.nGermanium)
+					line_ray.rotation_degrees =2 * calc_angle(line_ray.cast_to,normal,SingletonScript.nGermanium)
 					line_ray.force_raycast_update()
 			else: 
 				break
@@ -116,16 +120,18 @@ func calculate_angle(n):
 		var angle
 		angle = -1/sin(1/n)
 		return angle
-
-#func calc_angle(vec : Vector2,normal : Vector2,n):
-#	var degree = raycast2D.cast_to.angle_to(Vector2(-1,0))
-#	var angle
-#	if degree >=0:
-#		angle = 1/sin(sin(degree)/n)
-#		return angle
-#	else:
-#		angle = -1/sin(sin(degree)/n)
-#		return angle
+#ne valja jer prvo triba poslat v
+func calc_angle(vec : Vector2,normal : Vector2,n):
+	var degree = raycast2D.cast_to.angle_to(Vector2(1,0))
+	#print(degree)
+	#degree = degree*180/PI
+	var angle
+	if degree != 0:
+		angle = rad2deg(asin(sin(degree)/n))
+		#print(180*degree/PI," ", angle, " sindegree ",sin(degree)," asin ", asin(sin(degree)/n))
+		return angle
+	else:
+		return 0
 
 func _physics_process(_delta):
 	var mouse_position = get_local_mouse_position()
