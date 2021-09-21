@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends StaticBody2D
 
 
@@ -19,13 +19,14 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 88 )
 
 [node name="Mirror" type="StaticBody2D"]
+scale = Vector2( 1, 0.621883 )
 collision_layer = 4
 collision_mask = 2
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="mirror_coll" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
